@@ -1,0 +1,6 @@
+# Logitech HID++ devices (vendor 046d) over USB, Unifying/Lightspeed/Bolt
+# receivers and Bluetooth: let the logged-in desktop user (uaccess) and the
+# plugdev group open their hidraw nodes, so Logitech Mouse DPI needs no sudo.
+# KERNELS matches the parent HID device, e.g. 0003:046D:C07E.0007.
+# Must sort before 73-seat-late.rules for uaccess to apply.
+SUBSYSTEM=="hidraw", KERNELS=="*:046D:*", MODE="0660", GROUP="plugdev", TAG+="uaccess"
